@@ -71,29 +71,17 @@
 	
 	class Game {
 	  constructor(ctx) {
-	    this.ctx = ctx;
-	    this.doodle = new Doodle;
-	    this.blocks = [];
-	    this.score = 0;
-	
-	    this.start = this.start.bind(this);
-	    const b = new Block(200, 500);
-	    const b2 = new Block(200, 300, 2);
-	    const b3 = new Block(300, 400);
-	    const b4 = new Block(170, 370);
-	    const b5 = new Block(100, 200);
-	    const b6 = new Block(250, 120);
-	
-	    this.blocks.push(b);
-	    this.blocks.push(b2);
-	    this.blocks.push(b3);
-	    this.blocks.push(b4);
-	    this.blocks.push(b5);
-	    this.blocks.push(b6);
-	
-	
-	    this.doodle.draw(ctx);
 	    let interval;
+	    this.ctx = ctx;
+	    this.score = 0;
+	    this.doodle = new Doodle;
+	    this.doodle.draw(ctx);
+	    this.blocks = [
+	      new Block(200, 500), new Block(200, 300, 2),
+	      new Block(300, 400), new Block(170, 370),
+	      new Block(100, 200), new Block(250, 120)
+	    ];
+	    this.start = this.start.bind(this);
 	  }
 	
 	  start() {
@@ -183,7 +171,6 @@
 	
 	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
 	    this.ctx.fillStyle = Game.BACKGROUND_COLOR;
-	
 	
 	    // Doodle Checks
 	    if (this.doodle.y <= this.doodle.jumpFrom - this.doodle.jumpHeight

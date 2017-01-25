@@ -7,6 +7,18 @@
   display: flex;
 }
 
+.main * {
+  margin: 100px;
+}
+
+img {
+  height: 200px;
+}
+
+img:hover {
+  opacity: 0.6;
+}
+
 h1 {
   font-family: 'Gloria Hallelujah', cursive;
   color: #A51834;
@@ -17,4 +29,9 @@ h1 {
 
 body {
   background-color: #D1F2F2;
+}
+
+.right {
+  height: 200px;
+  width: 310px;
 }
