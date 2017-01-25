@@ -81,13 +81,22 @@
 	
 	    this.start = this.start.bind(this);
 	    const b = new Block(200, 500);
-	    const b2 = new Block(200, 300);
+	    const b2 = new Block(200, 300, 2);
 	    const b3 = new Block(300, 400);
+	    const b4 = new Block(170, 370);
+	    const b5 = new Block(100, 200);
+	    const b6 = new Block(250, 120);
+	
 	
 	
 	    this.blocks.push(b);
 	    this.blocks.push(b2);
 	    this.blocks.push(b3);
+	    this.blocks.push(b4);
+	    this.blocks.push(b5);
+	    this.blocks.push(b6);
+	
+	
 	    this.doodle.draw(ctx);
 	    let interval;
 	  }
@@ -95,7 +104,6 @@
 	  start() {
 	    this.interval = setInterval(this.draw.bind(this), 18, this.ctx);
 	  }
-	
 	
 	  pause() {
 	    clearInterval(this.interval);
@@ -107,9 +115,9 @@
 	    switch (code) {
 	      case 32: this.interval ? this.pause() : this.start() ;
 	        break;
-	      case 37: this.doodle.dx = -3;
+	      case 37: this.doodle.dx = -4;
 	        break;
-	      case 39: this.doodle.dx = 3;
+	      case 39: this.doodle.dx = 4;
 	      defualt: return null;
 	    }
 	  }
@@ -156,9 +164,22 @@
 	  jump() {
 	    this.doodle.dy = Math.abs(this.doodle.dy) * -1;
 	  }
+	  newRandomBlock(maxY) {
+	    let x = Math.random() * Game.DIM_X;
+	    let y = Math.random() * 80;
+	    let type = Math.random() > 0.2 ? 1 : 2 ;
+	    this.blocks.push(new Block(x, y, type));
+	  }
+	  ensureMoreBlocks() {
+	    if (this.blocks[this.blocks.length -1].y > 120) {
+	      this.newRandomBlock(80);
+	    }
+	  }
+	
 	
 	  draw(ctx) {
 	    this.moveScreen();
+	    this.ensureMoreBlocks();
 	
 	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
 	    this.ctx.fillStyle = Game.BACKGROUND_COLOR;
@@ -206,6 +227,12 @@
 	
 	  draw(ctx) {
 	    // this.dy += this.gravity;
+	    if (this.x <= 0) {
+	      this.x = 400;
+	    } else if (this.x >= 400) {
+	      this.x = 0;
+	    }
+	    
 	    this.y += this.dy;
 	    this.x += this.dx;
 	
@@ -238,14 +265,20 @@
 	    this.type = type;
 	    this.width = 50;
 	    this.height = 20;
+	    this.color = "green";
 	    if (type === 2) {
 	      this.dx = 2;
+	      this.color = "blue";
 	    }
 	  }
 	
-	  draw(ctx, color = "green") {
+	  draw(ctx) {
+	    if (this.x <= this.width/2 || this.x >= 400 - this.width/2) {
+	      this.dx *= -1;
+	    }
 	    this.y += this.dy;
-	    ctx.fillStyle = color;
+	    this.x += this.dx;
+	    ctx.fillStyle = this.color;
 	    ctx.fillRect(this.x - this.width/2, this.y - this.height/2, this.width, this.height);
 	  }
 	
