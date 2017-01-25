@@ -59,7 +59,6 @@
 	    game.doodle.dx = 0;
 	  });
 	
-	  game.start();
 	});
 
 
@@ -69,8 +68,6 @@
 
 	const Doodle = __webpack_require__(2);
 	const Block = __webpack_require__(3);
-	
-	const Map = __webpack_require__(4);
 	
 	class Game {
 	  constructor(ctx) {
@@ -93,6 +90,7 @@
 	    this.blocks.push(b4);
 	    this.blocks.push(b5);
 	    this.blocks.push(b6);
+	
 	
 	    this.doodle.draw(ctx);
 	    let interval;
@@ -130,7 +128,7 @@
 	
 	    if (this.doodle.lastJump.y < 500) {
 	      for(let i = 0; i < this.blocks.length; i++) {
-	        this.blocks[i].dy = 3;
+	        this.blocks[i].dy = 8;
 	      }
 	    } else if (this.doodle.lastJump.y >= 400) {
 	      for(let i = 0; i < this.blocks.length; i++) {
@@ -146,7 +144,7 @@
 	        && this.doodle.x >= block.x - block.width/2) {
 	
 	        // hits block height while falling
-	          if (this.doodle.y <= block.y
+	          if (this.doodle.y <= block.y + block.height/2
 	           && this.doodle.y >= block.y -block.height/2
 	           && this.doodle.dy > 0) {
 	             // jump from new block
@@ -159,8 +157,9 @@
 	  }
 	
 	  jump() {
-	    this.doodle.dy = Math.abs(this.doodle.dy) * -1;
+	    this.doodle.dy = -10;
 	  }
+	
 	  newRandomBlock(maxY) {
 	    let x = (Math.random() * (Game.DIM_X - 40)) + 20;
 	    let y = Math.random() * 80;
@@ -173,6 +172,10 @@
 	    }
 	  }
 	
+	  ensureReachableBlock() {
+	
+	  }
+	
 	
 	  draw(ctx) {
 	    this.moveScreen();
@@ -180,7 +183,7 @@
 	
 	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
 	    this.ctx.fillStyle = Game.BACKGROUND_COLOR;
-	    this.ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
+	
 	
 	    // Doodle Checks
 	    if (this.doodle.y <= this.doodle.jumpFrom - this.doodle.jumpHeight
@@ -200,7 +203,7 @@
 	
 	Game.DIM_X = 400;
 	Game.DIM_Y = 600;
-	Game.BACKGROUND_COLOR = "#000000";
+	Game.BACKGROUND_COLOR = "#00FFFF00";
 	module.exports = Game;
 
 
@@ -213,9 +216,8 @@
 	    this.x = 200;
 	    this.y = 320;
 	    this.dx = 0;
-	    this.dy = -8;
-	    // this.dy = 0;
-	    // this.gravity = 0.6;
+	    this.dy = 0;
+	    this.gravity = 0.4;
 	    this.lastJump = null;
 	    this.jumpFrom = 500;
 	    this.jumpHeight = 150;
@@ -223,13 +225,13 @@
 	  }
 	
 	  draw(ctx) {
-	    // this.dy += this.gravity;
+	    this.dy += this.gravity;
 	    if (this.x <= 0) {
 	      this.x = 400;
 	    } else if (this.x >= 400) {
 	      this.x = 0;
 	    }
-	    
+	
 	    this.y += this.dy;
 	    this.x += this.dx;
 	
@@ -260,7 +262,7 @@
 	    this.dy = 0;
 	    this.dx = 0;
 	    this.type = type;
-	    this.width = 50;
+	    this.width = 60;
 	    this.height = 20;
 	    this.color = "green";
 	    if (type === 2) {
@@ -283,19 +285,6 @@
 	}
 	
 	module.exports = Block;
-
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	
-	
-	class Map {
-	
-	}
-	
-	module.exports = Map;
 
 
 /***/ }

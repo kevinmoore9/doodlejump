@@ -8,7 +8,7 @@ Doodle Jump was a popular iPhone game known for it's addicting yet simple gamepl
 
 With this implementation of DoodleJump, users will be able to:
   * Start and pause the gameplay
-  * Control the alien with the left and right arrow keys and the A and S keys
+  * Control the alien with the left and right arrow keys
   * Toggle between multiple background themes
 
  In addition the game will include:
