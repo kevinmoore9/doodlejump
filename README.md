@@ -2,18 +2,18 @@
 
 ## Background
 
-Doodle Jump was a popular iPhone game known for it's addicting yet simple gameplay. The rules of the game are simple, control the alien to jump from block to block withouot falling out of the screen. 
+Doodle Jump was a popular iPhone game known for it's addicting yet simple gameplay. The rules of the game are simple, control the alien to jump from block to block without falling out of the screen.
 
 ## Functionality and MVP
 
-With this implementation of DoodleJump, users will be able to: 
+With this implementation of DoodleJump, users will be able to:
   * Start and pause the gameplay
   * Control the alien with the left and right arrow keys and the A and S keys
   * Toggle between multiple background themes
- 
+
  In addition the game will include:
-  * Basic gamplay obstacles including springs
-  * Appropriate sound and background music that can be easily toggled off
+  * Basic gameplay obstacles including springs
+
 
 ## Wireframes
 
@@ -28,7 +28,7 @@ This project will be implemented using the following technologies:
 * HTML 5 Canvas
 * Webpack
 
-There will be three main scripts will control the functionality of the gameplay, 
+There will be three main scripts will control the functionality of the gameplay,
 * map.js: this script will handle the generation of a randomized set of blocks on the map as well as the logic for rendering the basic gameplay view.
 * block.js: this script will handle the features of an individual block including solid or breakable as well as any obstacles they may contain
 * doodle.js: this script will contain the movement and rendering of the alien
@@ -45,7 +45,7 @@ Goals for the day:
 * Review and familiarize with canvas
 * Write the basic script for rendering a game map
 
-### Day 2: 
+### Day 2:
 Today will be focused on writing the script for a basic block element (solid, no obstacles) and the basic script for the aliens motion and controls. By the end of today, we should have a very basic, yet complete gameplay.
 
 Goals for the day:
@@ -53,7 +53,7 @@ Goals for the day:
 * Write the script for the control and motion of the alien in doodle.js
 * If time permits, write more advanced gameplay features such as pausing and screenwrapping
 
-### Day 3: 
+### Day 3:
 Today will be all about the blocks and obstacles and how the affect the alien. We will start with two additional block types: breakable blocks and blocks with springs. These will have slightly different affects on the aliens change in velocity when contacted by the alien.
 
 Goals for the day:
@@ -71,4 +71,5 @@ Goals for the day:
 
 ## Bonus Features:
 * Add additional obsticales such as jetpacks, rockets, etc.
+* Background music and appropriate gameplay sounds
 * Track high scores
