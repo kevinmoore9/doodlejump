@@ -87,15 +87,12 @@
 	    const b5 = new Block(100, 200);
 	    const b6 = new Block(250, 120);
 	
-	
-	
 	    this.blocks.push(b);
 	    this.blocks.push(b2);
 	    this.blocks.push(b3);
 	    this.blocks.push(b4);
 	    this.blocks.push(b5);
 	    this.blocks.push(b6);
-	
 	
 	    this.doodle.draw(ctx);
 	    let interval;
@@ -115,9 +112,9 @@
 	    switch (code) {
 	      case 32: this.interval ? this.pause() : this.start() ;
 	        break;
-	      case 37: this.doodle.dx = -4;
+	      case 37: this.doodle.dx = -5;
 	        break;
-	      case 39: this.doodle.dx = 4;
+	      case 39: this.doodle.dx = 5;
 	      defualt: return null;
 	    }
 	  }
@@ -165,7 +162,7 @@
 	    this.doodle.dy = Math.abs(this.doodle.dy) * -1;
 	  }
 	  newRandomBlock(maxY) {
-	    let x = Math.random() * Game.DIM_X;
+	    let x = (Math.random() * (Game.DIM_X - 40)) + 20;
 	    let y = Math.random() * 80;
 	    let type = Math.random() > 0.2 ? 1 : 2 ;
 	    this.blocks.push(new Block(x, y, type));
