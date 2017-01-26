@@ -73,7 +73,7 @@
 	  constructor(ctx) {
 	    let interval;
 	    this.ctx = ctx;
-	    this.doodle = new Doodle;
+	    this.doodle = new Doodle(ctx);
 	    this.doodle.draw(ctx);
 	    this.blocks = [
 	      new Block(200, 500), new Block(200, 300, 2),
@@ -127,8 +127,8 @@
 	  jumpCheck() {
 	    this.blocks.forEach( block => {
 	      // hit block horizontally
-	      if ( this.doodle.x <= block.x + block.width/2
-	        && this.doodle.x >= block.x - block.width/2) {
+	      if ( this.doodle.x <= block.x + 40
+	        && this.doodle.x >= block.x - 40) {
 	
 	        // hits block height while falling
 	          if (this.doodle.y <= block.y + block.height/2
@@ -177,7 +177,7 @@
 	    // blue rect
 	    ctx.beginPath();
 	    ctx.rect(0, 0, 400, 70);
-	    ctx.fillStyle = "rgba(135,206,250, 0.6)";
+	    ctx.fillStyle = "rgba(135,206,250, 0.1)";
 	    ctx.fill();
 	  }
 	
@@ -225,7 +225,8 @@
 	    this.lastJump = null;
 	    this.jumpFrom = 500;
 	    this.jumpHeight = 150;
-	
+	    this.img = document.getElementById('doodle');
+	    // debugger
 	  }
 	
 	  draw(ctx) {
@@ -240,10 +241,14 @@
 	    this.x += this.dx;
 	
 	    ctx.fillStyle = "blue";
-	    ctx.beginPath();
-	    ctx.arc(
-	      this.x, this.y, 15, 0, 2 * Math.PI, true
+	    // ctx.beginPath();
+	    // ctx.arc(
+	    //   this.x, this.y, 15, 0, 2 * Math.PI, true
+	    // );
+	    ctx.drawImage(
+	      this.img, this.x - 40, this.y - 80, 80, 80
 	    );
+	
 	    ctx.fill();
 	  }
 	

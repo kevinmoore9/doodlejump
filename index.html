@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Doodle Jump</title>
     <link rel="stylesheet" type="text/css" href="main.scss">
+
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
   </head>
   <body>
@@ -16,9 +17,15 @@
         <img class="linkedin" src="images/linkedin.png" />
       </a>
     </div>
-    <img class="ship" src="images/ufo.png" />
     <canvas id="canvas" style="border:1px solid black"></canvas>
-    <div class="right"></div>
+
+    <div class="background">
+      <img class="ship" src="images/ufo.png" />
+      <div class="themes">
+        <img src="images/doodle.png" id="doodle"/>
+      </div>
+    </div>
+
      <script type="text/javascript" src="bundle.js"></script>
   </body>
 </html>

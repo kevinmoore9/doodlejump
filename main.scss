@@ -6,15 +6,6 @@
 }
 
 
-.ship {
-  height: 200px;
-  margin-top: 200px;
-  margin-left: 100px;
-}
-
-.ship:hover {
-  opacity: 0.6;
-}
 
 .profile-links {
     position: absolute;
@@ -49,4 +40,25 @@ body {
 .right {
   height: 200px;
   width: 310px;
+}
+
+.background {
+  display: flex;
+  justify-content: space-between;
+  padding: 150px 100px;
+}
+.ship {
+  height: 200px;
+  margin-top: 50px;
+}
+
+.ship:hover {
+  opacity: 0.6;
+}
+
+.themes {
+  padding-right: 100px;
+}
+#doodle {
+  height: 150px;
 }
