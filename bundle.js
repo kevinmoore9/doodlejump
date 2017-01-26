@@ -73,12 +73,11 @@
 	  constructor(ctx) {
 	    let interval;
 	    this.ctx = ctx;
-	    this.score = 0;
 	    this.doodle = new Doodle;
 	    this.doodle.draw(ctx);
 	    this.blocks = [
 	      new Block(200, 500), new Block(200, 300, 2),
-	      new Block(300, 400), new Block(170, 370),
+	      new Block(300, 400), new Block(110, 370),
 	      new Block(100, 200), new Block(250, 120)
 	    ];
 	    this.start = this.start.bind(this);
@@ -138,15 +137,12 @@
 	             // jump from new block
 	             this.doodle.lastJump = block;
 	             this.doodle.jumpFrom = block.y;
-	             this.jump();
+	             this.doodle.jump();
 	           }
 	        }
 	    });
 	  }
 	
-	  jump() {
-	    this.doodle.dy = -10;
-	  }
 	
 	  newRandomBlock(maxY) {
 	    let x = (Math.random() * (Game.DIM_X - 40)) + 20;
@@ -201,7 +197,7 @@
 	class Doodle {
 	  constructor(ctx) {
 	    this.x = 200;
-	    this.y = 320;
+	    this.y = 400;
 	    this.dx = 0;
 	    this.dy = 0;
 	    this.gravity = 0.4;
@@ -230,6 +226,9 @@
 	    ctx.fill();
 	  }
 	
+	  jump() {
+	    this.dy = -10;
+	  }
 	
 	}
 	

@@ -1,22 +1,35 @@
 #canvas {
   background-image: url("./images/background.png");
-  margin: auto;
+  position: absolute;
+  margin: 100px auto 0; left: 0; right: 0;
+
 }
 
-.main {
-  display: flex;
-}
 
-.main * {
-  margin: 100px;
-}
-
-img {
+.ship {
   height: 200px;
+  margin-top: 200px;
+  margin-left: 100px;
 }
 
-img:hover {
+.ship:hover {
   opacity: 0.6;
+}
+
+.profile-links {
+    position: absolute;
+    right: 50px;
+    // align-items: center;
+}
+
+.linkedin {
+  height: 80px;
+}
+
+.github {
+  height: 55px;
+  position: relative;
+  bottom: 13px;
 }
 
 h1 {
@@ -24,7 +37,9 @@ h1 {
   color: #A51834;
   text-align: center;
   font-size: 40px;
-  margin: 5px;
+
+  position: absolute;
+  margin: 5px auto; left: 0; right: 0;
 }
 
 body {
