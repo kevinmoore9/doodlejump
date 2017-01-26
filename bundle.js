@@ -160,13 +160,33 @@
 	
 	  }
 	
+	  drawMap(ctx) {
+	    ctx.font = "30px Veranda";
+	    ctx.fillStyle = "black";
+	    ctx.fillText(
+	      `${Math.round(this.blocks[0].y - this.doodle.lastJump.y)}`,
+	        10, 50
+	      );
+	
+	    // line
+	    ctx.beginPath();
+	    ctx.moveTo(0, 70);
+	    ctx.lineTo(400,70);
+	    ctx.stroke();
+	
+	    // blue rect
+	    ctx.beginPath();
+	    ctx.rect(0, 0, 400, 70);
+	    ctx.fillStyle = "rgba(135,206,250, 0.6)";
+	    ctx.fill();
+	  }
 	
 	  draw(ctx) {
 	    this.moveScreen();
 	    this.ensureMoreBlocks();
 	
-	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-	    this.ctx.fillStyle = Game.BACKGROUND_COLOR;
+	    ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+	    // ctx.fillStyle = Game.BACKGROUND_COLOR;
 	
 	    // Doodle Checks
 	    if (this.doodle.y <= this.doodle.jumpFrom - this.doodle.jumpHeight
@@ -177,8 +197,9 @@
 	    this.jumpCheck();
 	
 	    this.allObjects().forEach((object) => {
-	      object.draw(this.ctx);
+	      object.draw(ctx);
 	    });
+	    this.drawMap(ctx);
 	  }
 	
 	
