@@ -5,12 +5,13 @@
 
 }
 
-
-
 .profile-links {
     position: absolute;
     right: 50px;
-    // align-items: center;
+}
+
+.profile-links *:hover {
+  opacity: 0.8;
 }
 
 .linkedin {
@@ -27,7 +28,7 @@ h1 {
   font-family: 'Gloria Hallelujah', cursive;
   color: #A51834;
   text-align: center;
-  font-size: 40px;
+  font-size: 46px;
 
   position: absolute;
   margin: 5px auto; left: 0; right: 0;
@@ -58,7 +59,15 @@ body {
 
 .themes {
   padding-right: 100px;
+  width: 200px;
 }
+
 #doodle {
   height: 150px;
+}
+
+#spongebob {
+  height: 150px;
+  position: relative;
+  left: 10px;
 }

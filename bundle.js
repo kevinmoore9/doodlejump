@@ -48,10 +48,23 @@
 	
 	document.addEventListener("DOMContentLoaded", () => {
 	  const c = document.getElementById('canvas');
+	  const ctx = c.getContext('2d');
 	  c.width = Game.DIM_X;
 	  c.height = Game.DIM_Y;
-	  const ctx = c.getContext('2d');
-	  const game = new Game(ctx);
+	  let theme = 1;
+	  let game = new Game(ctx, theme);
+	
+	
+	  // document.getElementById('doodle').addEventListener("click", () => {
+	  //   theme = 1;
+	  //
+	  // });
+	  document.getElementById('spongebob').addEventListener("click", () => {
+	    theme = 2;
+	    game = new Game(ctx, theme);
+	  });
+	
+	
 	  document.addEventListener('keydown', e => {
 	    game.handleKeyPress(e);
 	  });
@@ -70,17 +83,22 @@
 	const Block = __webpack_require__(3);
 	
 	class Game {
-	  constructor(ctx) {
+	  constructor(ctx, theme) {
 	    let interval;
+	    this.theme = theme;
 	    this.ctx = ctx;
-	    this.doodle = new Doodle(ctx);
-	    this.doodle.draw(ctx);
+	    this.doodle = new Doodle(ctx, theme);
 	    this.blocks = [
 	      new Block(200, 500), new Block(200, 300, 2),
 	      new Block(300, 400), new Block(110, 370),
 	      new Block(100, 200), new Block(250, 120)
 	    ];
 	    this.start = this.start.bind(this);
+	  }
+	
+	  drawHome() {
+	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+	
 	  }
 	
 	  start() {
@@ -92,10 +110,29 @@
 	    this.interval = undefined;
 	  }
 	
+	  gameOver(ctx) {
+	    clearInterval(this.interval);
+	    this.interval = undefined;
+	
+	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+	    this.drawMap(this.ctx);
+	    this.ctx.font = "50px Gloria Hallelujah";
+	    this.ctx.fillStyle = "#A51834";
+	    this.ctx.fillText("game over!", 70, 150);
+	    this.ctx.font = "28px Gloria Hallelujah";
+	    this.ctx.fillStyle = "black";
+	    this.ctx.fillText(`your score: ${Math.round(this.blocks[0].y - this.doodle.lastJump.y)}`, 100, 240);
+	    this.ctx.fillText('your highscore: make real', 20, 300);
+	    this.ctx.font = "20px Gloria Hallelujah";
+	    this.ctx.fillText('Hit enter to jump again!', 70, 400);
+	  }
+	
 	  handleKeyPress(e) {
 	    let code = e.keyCode;
 	    switch (code) {
 	      case 32: this.interval ? this.pause() : this.start() ;
+	        break;
+	      case 13: this.restart();
 	        break;
 	      case 37: this.doodle.dx = -5;
 	        break;
@@ -105,7 +142,7 @@
 	  }
 	
 	  allObjects() {
-	    return [this.doodle].concat(this.blocks);
+	    return this.blocks.concat([this.doodle]);
 	  }
 	
 	  moveScreen() {
@@ -161,24 +198,30 @@
 	  }
 	
 	  drawMap(ctx) {
-	    ctx.font = "30px Veranda";
-	    ctx.fillStyle = "black";
-	    ctx.fillText(
-	      `${Math.round(this.blocks[0].y - this.doodle.lastJump.y)}`,
-	        10, 50
-	      );
 	
 	    // line
 	    ctx.beginPath();
 	    ctx.moveTo(0, 70);
-	    ctx.lineTo(400,70);
+	    ctx.lineTo(400,60);
 	    ctx.stroke();
 	
 	    // blue rect
+	    ctx.fillStyle = "rgba(135,206,250, 0.7)";
 	    ctx.beginPath();
-	    ctx.rect(0, 0, 400, 70);
-	    ctx.fillStyle = "rgba(135,206,250, 0.1)";
+	    ctx.moveTo(0,0);
+	    ctx.lineTo(0,70);
+	    ctx.lineTo(400, 60);
+	    ctx.lineTo(400, 0);
+	    ctx.closePath();
 	    ctx.fill();
+	
+	    // text
+	    ctx.font = "30px Veranda";
+	    ctx.fillStyle = "black";
+	    ctx.fillText(
+	      `${Math.round(this.blocks[0].y - this.doodle.lastJump.y)}`,
+	      10, 50
+	    );
 	  }
 	
 	  draw(ctx) {
@@ -200,6 +243,7 @@
 	      object.draw(ctx);
 	    });
 	    this.drawMap(ctx);
+	    this.doodle.y > Game.DIM_Y ? this.gameOver() : null;
 	  }
 	
 	
@@ -216,7 +260,7 @@
 /***/ function(module, exports) {
 
 	class Doodle {
-	  constructor(ctx) {
+	  constructor(ctx, theme) {
 	    this.x = 200;
 	    this.y = 400;
 	    this.dx = 0;
@@ -225,8 +269,14 @@
 	    this.lastJump = null;
 	    this.jumpFrom = 500;
 	    this.jumpHeight = 150;
-	    this.img = document.getElementById('doodle');
-	    // debugger
+	    switch (theme) {
+	      case 1: this.img = document.getElementById('doodle');
+	        break;
+	      case 2: this.img = document.getElementById('spongebob');
+	        break;
+	      default: this.img = document.getElememtById('doodle');
+	    }
+	
 	  }
 	
 	  draw(ctx) {
@@ -241,10 +291,7 @@
 	    this.x += this.dx;
 	
 	    ctx.fillStyle = "blue";
-	    // ctx.beginPath();
-	    // ctx.arc(
-	    //   this.x, this.y, 15, 0, 2 * Math.PI, true
-	    // );
+	
 	    ctx.drawImage(
 	      this.img, this.x - 40, this.y - 80, 80, 80
 	    );
