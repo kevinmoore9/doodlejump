@@ -14,6 +14,10 @@ The main focus of the application is the JavaScript recreation of the classic mo
 *
 * Links to my personal LinkedIn and Github pages
 
+## Implementation
+
+The logic for the DoodleJump gameplay is all held within three separate scripts, each controlling a single class type. In doodle.js, all logic for creating, moving and drawing the character is held. In block.js, all similar logic for each individual platform block is held. This includes creating different block types. Finally, all logic of the gameplay itself is held in game.js. Among the most important 
+
 ## Technology
 
 My implementation of Doodle Jump uses a variety of technologies in it's implementation including:
