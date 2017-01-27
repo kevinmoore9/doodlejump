@@ -19,7 +19,7 @@ With this implementation of DoodleJump, users will be able to:
 
 The app will be a simple, one page app with the gameplay screen, controls, and buttons to toggle different theme options. In addition there will be a pop up modal with basic rules and background info as well as links to my LinkedIn and Github. It will be organized as shown below:
 
-[Wireframe](doodle_wire_frame)
+![alttag](./doodle_wire_frame.png)
 
 ## Architecture and Technologies
 
