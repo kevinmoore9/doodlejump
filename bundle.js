@@ -55,10 +55,10 @@
 	  let game = new Game(ctx, theme);
 	
 	
-	  // document.getElementById('doodle').addEventListener("click", () => {
-	  //   theme = 1;
-	  //
-	  // });
+	  document.getElementById('doodle').addEventListener("click", () => {
+	    theme = 1;
+	    game = new Game(ctx, theme);
+	  });
 	  document.getElementById('spongebob').addEventListener("click", () => {
 	    theme = 2;
 	    game = new Game(ctx, theme);
@@ -94,6 +94,11 @@
 	      new Block(100, 200), new Block(250, 120)
 	    ];
 	    this.start = this.start.bind(this);
+	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+	    this.doodle.draw(ctx);
+	    this.ctx.font = "30px Gloria Hallelujah";
+	    this.ctx.fillStyle = "#A51834";
+	    this.ctx.fillText("press space to begin", 60, 250);
 	  }
 	
 	  drawHome() {
@@ -124,7 +129,7 @@
 	    this.ctx.fillText(`your score: ${Math.round(this.blocks[0].y - this.doodle.lastJump.y)}`, 100, 240);
 	    this.ctx.fillText('your highscore: make real', 20, 300);
 	    this.ctx.font = "20px Gloria Hallelujah";
-	    this.ctx.fillText('Hit enter to jump again!', 70, 400);
+	    this.ctx.fillText('Select a character to jump again!', 30, 400);
 	  }
 	
 	  handleKeyPress(e) {

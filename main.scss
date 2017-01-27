@@ -34,6 +34,14 @@ h1 {
   margin: 5px auto; left: 0; right: 0;
 }
 
+h2 {
+  font-family: 'Gloria Hallelujah', cursive;
+  color: #A51834;
+  font-size: 30px;
+  position: relative;
+  right: 25px;
+}
+
 body {
   background-color: #D1F2F2;
 }
@@ -50,7 +58,10 @@ body {
 }
 .ship {
   height: 200px;
-  margin-top: 50px;
+  // margin-top: 50px;
+  position: relative;
+  right: 30px;
+  top: 100px;
 }
 
 .ship:hover {
@@ -58,7 +69,7 @@ body {
 }
 
 .themes {
-  padding-right: 100px;
+  padding-right:30px;
   width: 200px;
 }
 
@@ -70,4 +81,12 @@ body {
   height: 150px;
   position: relative;
   left: 10px;
+}
+
+#doodle:hover {
+  opacity: 0.6;
+}
+
+#spongebob:hover {
+  opacity: 0.6;
 }
