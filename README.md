@@ -11,12 +11,19 @@ This here is my own rendition of the classic mobile game, DoodleJump. It is buil
 The main focus of the application is the JavaScript recreation of the classic mobile game, DoodleJump. Unlike the original released on the iPhone, this version uses the keyboard arrow keys to control your character. In addition to the gameplay, there are also a few added features to note:
 
 * Select from the characters on the right to change your jumper
-*
 * Links to my personal LinkedIn and Github pages
 
 ## Implementation
 
-The logic for the DoodleJump gameplay is all held within three separate scripts, each controlling a single class type. In doodle.js, all logic for creating, moving and drawing the character is held. In block.js, all similar logic for each individual platform block is held. This includes creating different block types. Finally, all logic of the gameplay itself is held in game.js. Among the most important 
+The logic for the DoodleJump gameplay is all held within three separate scripts, each controlling a single class type. In doodle.js, all logic for creating, moving and drawing the character is held. In block.js, all similar logic for each individual platform block is held. This includes creating different block types. Finally, all logic of the gameplay itself is held in game.js. Among the most important logic here is:
+
+* Randomly creating new reachable, yet dispersed blocks
+* Scrolling the canvas window too keep the character in view
+* Tracking and rendering score
+
+All three script files are instantiated through an entry file, main.js, and are compiled into one bundle.js file using Webpack.
+
+Styling is all done with HTML5 and CSS3.
 
 ## Technology
 
