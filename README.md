@@ -11,6 +11,7 @@ This repository holds my rendition of the classic mobile game, DoodleJump. It is
 The main focus of the application is the JavaScript recreation of the classic mobile game, DoodleJump. Unlike the original released on the iPhone, this version uses the keyboard arrow keys to control your character. In addition to the gameplay, there are also a few added features to note:
 
 * Select from the characters on the right to change your jumper
+* Info section revealed by the spaceship animation
 * Links to my personal LinkedIn and Github pages
 
 ## Implementation
