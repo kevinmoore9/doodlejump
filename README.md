@@ -2,7 +2,7 @@
 
 [Live on Github Pages](https://kevinmoore9.github.io/doodlejump/)
 
-This here is my own rendition of the classic mobile game, DoodleJump. It is built using JavaScript, HTML5, and CSS3. All credit of the gameplay goes to the creator. All of the code, however, is my own.
+This repository holds my rendition of the classic mobile game, DoodleJump. It is built using JavaScript, HTML5, and CSS3. All credit of the gameplay goes to the creator. All of the code, however, is my own.
 
 ![alttag](./docs/doodle_main.png)
 
