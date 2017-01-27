@@ -1,3 +1,9 @@
+* {
+  animation-play-state: inherit;
+  animation-fill-mode: forwards;
+  animation-duration: inherit;
+}
+
 #canvas {
   background-image: url("./images/background.png");
   position: absolute;
@@ -56,17 +62,70 @@ body {
   justify-content: space-between;
   padding: 150px 100px;
 }
+@keyframes change {
+  100% {top: 0px;}
+
+}
 .ship {
   height: 200px;
-  // margin-top: 50px;
   position: relative;
   right: 30px;
   top: 100px;
+  animation-name: change;
 }
 
 .ship:hover {
   opacity: 0.6;
 }
+
+.left {
+  animation-name: show-text;
+  animation-duration: 3s;
+  animation-play-state: paused;
+  position: relative;
+  bottom: 70px;
+}
+
+.left:hover {
+  animation-play-state: running;
+}
+
+.triangle {
+  margin: 0;
+  width: 0;
+  height: 0;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+  border-bottom:125px solid transparent;
+  position: relative;
+  bottom: 50px;
+  animation-name: show-triangle;
+}
+
+@keyframes show-info {
+100% {
+  color: black;
+  background-color: rgba(353, 92, 45, 0.7);
+  }
+}
+
+@keyframes show-triangle {
+  100% {border-bottom:125px solid rgba(353, 92, 45, 0.7);}
+}
+
+.rules {
+  margin: 0;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 18px;
+  max-width: 250px;
+  text-align: center;
+  color: transparent;
+  background-color: transparent;
+  position: relative;
+  bottom: 50px;
+  animation-name: show-info;
+}
+
 
 .themes {
   padding-right:30px;
