@@ -179,7 +179,7 @@
 	             // jump from new block
 	             this.doodle.lastJump = block;
 	             this.doodle.jumpFrom = block.y;
-	             this.doodle.jump();
+	             this.doodle.jump(block.type);
 	           }
 	        }
 	    });
@@ -189,7 +189,9 @@
 	  newRandomBlock(maxY) {
 	    let x = (Math.random() * (Game.DIM_X - 40)) + 20;
 	    let y = Math.random() * 80;
-	    let type = Math.random() > 0.2 ? 1 : 2 ;
+	    let type = 1;
+	    type = Math.random() < 0.7 ? type : 2 ;
+	    type = Math.random() < 0.9 ? type : 3 ;
 	    this.blocks.push(new Block(x, y, type));
 	  }
 	  ensureMoreBlocks() {
@@ -304,8 +306,13 @@
 	    ctx.fill();
 	  }
 	
-	  jump() {
+	  jump(blockType) {
 	    this.dy = -10;
+	    this.jumpHeight = 150;
+	    if (blockType === 3) {
+	      this.dy = -16;
+	      this.jumpHeight = 300;
+	    }
 	  }
 	
 	}
@@ -343,6 +350,12 @@
 	    this.x += this.dx;
 	    ctx.fillStyle = this.color;
 	    ctx.fillRect(this.x - this.width/2, this.y - this.height/2, this.width, this.height);
+	
+	    if (this.type === 3) {
+	      let img = document.getElementById('spring');
+	      ctx.drawImage(img, this.x - 10, this.y - 30, 20, 20);
+	      ctx.fill();
+	    }
 	  }
 	
 	
