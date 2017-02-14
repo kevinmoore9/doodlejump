@@ -155,9 +155,17 @@
 	        ? this.doodle.lastJump
 	        : this.blocks[0];
 	
-	    if (this.doodle.lastJump.y < 500) {
+	    if (this.doodle.lastJump.y < 200) {
 	      for(let i = 0; i < this.blocks.length; i++) {
-	        this.blocks[i].dy = 8;
+	        this.blocks[i].dy = 20;
+	      }
+	    } else if (this.doodle.lastJump.y < 400) {
+	      for(let i = 0; i < this.blocks.length; i++) {
+	        this.blocks[i].dy = 15;
+	        }
+	      } else if (this.doodle.lastJump.y < 500) {
+	        for(let i = 0; i < this.blocks.length; i++) {
+	        this.blocks[i].dy = 10;
 	      }
 	    } else if (this.doodle.lastJump.y >= 400) {
 	      for(let i = 0; i < this.blocks.length; i++) {
@@ -179,7 +187,7 @@
 	             // jump from new block
 	             this.doodle.lastJump = block;
 	             this.doodle.jumpFrom = block.y;
-	             this.doodle.jump(block.type);
+	             this.doodle.jump();
 	           }
 	        }
 	    });
@@ -306,13 +314,10 @@
 	    ctx.fill();
 	  }
 	
-	  jump(blockType) {
+	  jump() {
 	    this.dy = -10;
 	    this.jumpHeight = 150;
-	    if (blockType === 3) {
-	      this.dy = -16;
-	      this.jumpHeight = 300;
-	    }
+	
 	  }
 	
 	}
@@ -350,12 +355,6 @@
 	    this.x += this.dx;
 	    ctx.fillStyle = this.color;
 	    ctx.fillRect(this.x - this.width/2, this.y - this.height/2, this.width, this.height);
-	
-	    if (this.type === 3) {
-	      let img = document.getElementById('spring');
-	      ctx.drawImage(img, this.x - 10, this.y - 30, 20, 20);
-	      ctx.fill();
-	    }
 	  }
 	
 	
