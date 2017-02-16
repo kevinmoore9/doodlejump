@@ -23,12 +23,15 @@ header {
 
 .linkedin {
   height: 80px;
+  position: absolute;
+  right: 20px;
 }
 
 .github {
   height: 55px;
-  position: relative;
-  bottom: 13px;
+  position: absolute;
+  top: 13px;
+  left: 20px;
 }
 
 h1 {
@@ -36,8 +39,6 @@ h1 {
   color: #A51834;
   text-align: center;
   font-size: 46px;
-  position: relative;
-  left: 70px;
   margin: auto;
 }
 
@@ -51,7 +52,7 @@ h2 {
 
 body {
   background: #D1F2F2;
-  background: -webkit-linear-gradient(#D1F2F2, #4ca2cd);
+  background: -webkit-linear-gradient(top left, #D1F2F2, #4ca2cd);
   background: -o-linear-gradient(#D1F2F2, #4ca2cd);
   background: -moz-linear-gradient(#D1F2F2, #4ca2cd);
   background: linear-gradient(#D1F2F2, #4ca2cd);
@@ -62,8 +63,8 @@ body {
 
 .background {
   display: flex;
-  justify-content: space-between;
-  padding: 20px 100px;
+  justify-content: space-around;
+  padding: 20px;
 }
 @keyframes change {
   100% {top: 0px;}
@@ -86,8 +87,8 @@ body {
   animation-duration: 3s;
   animation-play-state: paused;
   width: 310px;
-
 }
+
 
 .left:hover {
   animation-play-state: running;
@@ -171,7 +172,7 @@ body {
   .background * {
     margin: auto;
   }
-  .h1 {
+  h1 {
     padding: 0 20px;
   }
 
