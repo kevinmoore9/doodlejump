@@ -61,7 +61,7 @@ body {
 .background {
   display: flex;
   justify-content: space-between;
-  padding: 50px 100px;
+  padding: 20px 100px;
 }
 @keyframes change {
   100% {top: 0px;}
