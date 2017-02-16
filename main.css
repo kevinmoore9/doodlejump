@@ -17,7 +17,6 @@ header {
   padding: 0 100px;
 }
 
-
 .profile-links *:hover {
   opacity: 0.8;
 }
@@ -37,7 +36,6 @@ h1 {
   color: #A51834;
   text-align: center;
   font-size: 46px;
-
   position: relative;
   left: 70px;
   margin: auto;
@@ -140,14 +138,14 @@ body {
 
 #doodle {
   height: 150px;
-  padding: 0 90px;
+  margin: 0 90px;
 }
 
 #spongebob {
   height: 150px;
   position: relative;
   left: 10px;
-  padding: 0 90px;
+  margin: 0 90px;
 }
 
 #doodle:hover {
@@ -156,6 +154,12 @@ body {
 
 #spongebob:hover {
   opacity: 0.6;
+}
+
+@media (max-width: 1200px) {
+  .background {
+    padding: 20px;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -167,8 +171,12 @@ body {
   .background * {
     margin: auto;
   }
+  .h1 {
+    padding: 0 20px;
+  }
 
   #canvas {
     margin: auto;
+    order: -1;
   }
 }
