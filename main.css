@@ -53,11 +53,11 @@ body {
   background: -webkit-linear-gradient(#D1F2F2, #4ca2cd);
   min-width: 1315px;
 }
-
+/*
 .right {
   height: 200px;
   width: 310px;
-}
+}*/
 
 .background {
   display: flex;
@@ -85,8 +85,7 @@ body {
   animation-duration: 3s;
   animation-play-state: paused;
   width: 310px;
-  position: relative;
-  bottom: 70px;
+
 }
 
 .left:hover {
@@ -138,12 +137,14 @@ body {
 
 #doodle {
   height: 150px;
+  padding: 0 90px;
 }
 
 #spongebob {
   height: 150px;
   position: relative;
   left: 10px;
+  padding: 0 90px;
 }
 
 #doodle:hover {
