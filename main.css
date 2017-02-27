@@ -67,14 +67,14 @@ body {
   padding: 20px;
 }
 @keyframes change {
-  100% {top: 0px;}
+  100% {bottom: 30px;}
 
 }
 .ship {
   height: 200px;
   margin: auto;
   position: relative;
-  top: 100px;
+  bottom: -50px;
   animation-name: change;
 }
 
@@ -103,7 +103,7 @@ body {
   border-right: 125px solid transparent;
   border-bottom:125px solid transparent;
   position: relative;
-  bottom: 50px;
+  bottom: 80px;
   animation-name: show-triangle;
 }
 
@@ -128,7 +128,7 @@ body {
   color: transparent;
   background-color: transparent;
   position: relative;
-  bottom: 50px;
+  bottom: 80px;
   animation-name: show-info;
 }
 
