@@ -53,7 +53,7 @@
 	  c.height = Game.DIM_Y;
 	  let theme = 1;
 	  let game = new Game(ctx, theme);
-	  game.drawHome();
+	  // game.drawHome();
 	
 	  document.getElementById('doodle').addEventListener("click", () => {
 	    theme = 1;
@@ -96,10 +96,10 @@
 	      new Block(100, 200), new Block(250, 120)
 	    ];
 	    this.start = this.start.bind(this);
+	    this.drawHome();
 	  }
 	
 	  drawHome() {
-	    console.log('home');
 	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
 	    this.doodle.draw(this.ctx);
 	    this.ctx.font = "30px Gloria Hallelujah";
@@ -117,7 +117,7 @@
 	    this.interval = undefined;
 	  }
 	
-	  gameOver(ctx) {
+	  gameOver() {
 	    clearInterval(this.interval);
 	    this.interval = undefined;
 	
@@ -219,7 +219,7 @@
 	    ctx.stroke();
 	
 	    // blue rect
-	    ctx.fillStyle = "rgba(135,206,250, 0.7)";
+	    ctx.fillStyle = "rgba(135,206,250,0.7)";
 	    ctx.beginPath();
 	    ctx.moveTo(0,0);
 	    ctx.lineTo(0,70);
@@ -241,12 +241,11 @@
 	    }
 	  }
 	
-	  draw(ctx) {
+	  draw() {
 	    this.moveScreen();
 	    this.ensureMoreBlocks();
 	
-	    ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-	    // ctx.fillStyle = Game.BACKGROUND_COLOR;
+	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
 	
 	    // Doodle Checks
 	    if (this.doodle.y <= this.doodle.jumpFrom - this.doodle.jumpHeight
@@ -257,9 +256,9 @@
 	    this.jumpCheck();
 	
 	    this.allObjects().forEach((object) => {
-	      object.draw(ctx);
+	      object.draw(this.ctx);
 	    });
-	    this.drawMap(ctx);
+	    this.drawMap(this.ctx);
 	    this.doodle.y > Game.DIM_Y ? this.gameOver() : null;
 	  }
 	
@@ -268,7 +267,6 @@
 	
 	Game.DIM_X = 400;
 	Game.DIM_Y = 600;
-	Game.BACKGROUND_COLOR = "#00FFFF00";
 	module.exports = Game;
 
 
