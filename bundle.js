@@ -53,15 +53,17 @@
 	  c.height = Game.DIM_Y;
 	  let theme = 1;
 	  let game = new Game(ctx, theme);
-	
+	  game.drawHome();
 	
 	  document.getElementById('doodle').addEventListener("click", () => {
 	    theme = 1;
 	    game = new Game(ctx, theme);
+	    game.drawHome();
 	  });
 	  document.getElementById('spongebob').addEventListener("click", () => {
 	    theme = 2;
 	    game = new Game(ctx, theme);
+	    game.drawHome();
 	  });
 	
 	
@@ -94,16 +96,16 @@
 	      new Block(100, 200), new Block(250, 120)
 	    ];
 	    this.start = this.start.bind(this);
-	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-	    this.doodle.draw(ctx);
-	    this.ctx.font = "30px Gloria Hallelujah";
-	    this.ctx.fillStyle = "#A51834";
-	    this.ctx.fillText("press space to begin", 60, 250);
 	  }
 	
 	  drawHome() {
+	    console.log('home');
 	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-	
+	    this.doodle.draw(this.ctx);
+	    this.ctx.font = "30px Gloria Hallelujah";
+	    this.ctx.fillStyle = "#A51834";
+	    this.ctx.fillText("press space to begin", 60, 250);
+	    this.drawMap(this.ctx);
 	  }
 	
 	  start() {
@@ -120,7 +122,6 @@
 	    this.interval = undefined;
 	
 	    this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-	    this.drawMap(this.ctx);
 	    this.ctx.font = "50px Gloria Hallelujah";
 	    this.ctx.fillStyle = "#A51834";
 	    this.ctx.fillText("game over!", 70, 150);
@@ -130,6 +131,7 @@
 	    this.ctx.fillText(`your highscore: ${Math.round(this.blocks[0].y - this.doodle.lastJump.y)}`, 80, 300);
 	    this.ctx.font = "20px Gloria Hallelujah";
 	    this.ctx.fillText('Select a character to jump again!', 30, 400);
+	    this.drawMap(this.ctx);
 	  }
 	
 	  handleKeyPress(e) {
@@ -208,10 +210,6 @@
 	    }
 	  }
 	
-	  ensureReachableBlock() {
-	
-	  }
-	
 	  drawMap(ctx) {
 	
 	    // line
@@ -233,10 +231,14 @@
 	    // text
 	    ctx.font = "30px Veranda";
 	    ctx.fillStyle = "black";
-	    ctx.fillText(
-	      `${Math.round(this.blocks[0].y - this.doodle.lastJump.y)}`,
-	      10, 50
-	    );
+	    if (this.doodle.lastJump) {
+	      ctx.fillText(
+	        `${Math.round(this.blocks[0].y - this.doodle.lastJump.y)}`,
+	        10, 50
+	      );
+	    } else {
+	      ctx.fillText(`0`, 10, 50);
+	    }
 	  }
 	
 	  draw(ctx) {
